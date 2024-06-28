@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'login-project';
+  
+  showLogin: boolean = true;
+
+  change() {
+    this.showLogin = !this.showLogin;
+  }
 }
