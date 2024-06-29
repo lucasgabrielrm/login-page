@@ -29,7 +29,6 @@
     .link {
       color: #BC8363;
       cursor: pointer;
-      text-align: center !important;
     }
 
     .login, .signup {
@@ -68,10 +67,15 @@
           margin-bottom: 10px;
         }
       }
+
+      .forgot-password {
+        display: flex;
+        justify-content: center;
+      }
     }
 
-    .rodape {
-      padding: 2rem 0;
+    .footer {
+      padding-bottom: 2rem;
 
       .social {
         display: flex;
