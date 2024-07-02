@@ -26,7 +26,7 @@
             <mat-error>Password is <strong>required</strong></mat-error>
           }
         </mat-form-field>
-        <button>Login</button>
+        <button (click)="login()">Login</button>
       </form>
       <div class="forgot-password">
         <p class="link">Forgot Password</p>
@@ -65,7 +65,7 @@
             <mat-error>Password must contain at least: <strong>8 characters, an uppercase, a lowercase, a number and an special character.</strong></mat-error>
           }
         </mat-form-field>
-        <button (click)="change()">Create Account</button>
+        <button (click)="createAccount()">Create Account</button>
       </form>
     </div>
 

@@ -57,6 +57,21 @@ export class AppComponent {
   }
 
   change() {
+    this.loginForm.reset();
+    this.signUpForm.reset();
     this.showLogin = !this.showLogin;
   }
+
+  login() {
+    if (this.loginForm.valid) {
+      alert('Success! You are logged in!');
+      console.info('Login Form (for development purposes only)', this.loginForm.value);
+    }
+  }
+
+  createAccount() {
+    if (this.signUpForm.valid) {
+      alert('Success! Your account was created.');
+      console.info('Sign Up Form (for development purposes only)', this.signUpForm.value);
+    }
 }
