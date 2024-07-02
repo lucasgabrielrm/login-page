@@ -1,11 +1,22 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { trigger, transition, style, animate } from '@angular/animations';
 import { StrongPasswordRegx } from 'src/service/strong-password-regex';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    trigger('onOff', [
+      transition(':enter', [style({
+          opacity: 0,
+          transform: 'translateY(-10%)'
+        }),
+        animate(300)
+      ])
+    ])
+ ]
 })
 export class AppComponent {
   loginForm!: FormGroup;
@@ -74,4 +85,5 @@ export class AppComponent {
       alert('Success! Your account was created.');
       console.info('Sign Up Form (for development purposes only)', this.signUpForm.value);
     }
+  }
 }

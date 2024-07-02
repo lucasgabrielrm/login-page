@@ -4,7 +4,7 @@
       <img src="../assets/header.png" alt="">
     </div>
 
-    <div *ngIf="showLogin" class="login">
+    <div *ngIf="showLogin" @onOff class="login">
       <h2>Login</h2>
       <p>Welcome back!<br />
       Please login to continue.</p>
@@ -33,7 +33,7 @@
       </div>
     </div>
 
-    <div *ngIf="!showLogin" class="signup">
+    <div *ngIf="!showLogin" @onOff class="signup">
       <h2>Create Account</h2>
       <p>Enter your information below or <br />
         continue with social media account.</p>
