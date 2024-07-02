@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { StrongPasswordRegx } from 'src/service/strong-password-regex';
+import { PhoneNumberRegex, StrongPasswordRegex } from 'src/service/strong-password-regex';
 
 @Component({
   selector: 'app-root',
@@ -62,8 +62,8 @@ export class AppComponent {
   createSignUpForm() {
     this.signUpForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.pattern(StrongPasswordRegx)]],
-      mobileNumber: ['', [Validators.required]]
+      password: ['', [Validators.required, Validators.pattern(StrongPasswordRegex)]],
+      mobileNumber: ['', [Validators.required, Validators.pattern(PhoneNumberRegex)]]
     });
   }
 

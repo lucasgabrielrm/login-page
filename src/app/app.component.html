@@ -50,9 +50,12 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label><span class="material-icons">phone_iphone</span> Mobile Number</mat-label>
-          <input type="tel" matInput formControlName="mobileNumber" placeholder="Your mobile number">
+          <input type="number" matInput formControlName="mobileNumber" placeholder="Your mobile number">
           @if (mobileNumberSignUp.hasError('required')) {
             <mat-error>Mobile Number is <strong>required</strong></mat-error>
+          }
+          @if (mobileNumberSignUp.hasError('pattern') && !mobileNumberSignUp.hasError('required')) {
+            <mat-error>Please enter a valid mobile number.</mat-error>
           }
         </mat-form-field>
         <mat-form-field appearance="outline">
