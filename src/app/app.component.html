@@ -8,21 +8,21 @@
       <h2>Login</h2>
       <p>Welcome back!<br />
       Please login to continue.</p>
-      <form>
+      <form [formGroup]="loginForm">
         <mat-form-field appearance="outline">
           <mat-label><span class="material-icons">email</span> Email address</mat-label>
-          <input type="email" matInput [formControl]="emailFormControl" placeholder="Your email address">
-          @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+          <input type="email" matInput formControlName="email" placeholder="Your email address">
+          @if (emailLogin.hasError('email') && !emailLogin.hasError('required')) {
             <mat-error>Please enter a valid email address</mat-error>
           }
-          @if (emailFormControl.hasError('required')) {
+          @if (emailLogin.hasError('required')) {
             <mat-error>Email is <strong>required</strong></mat-error>
           }
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label><span class="material-icons">lock</span> Password</mat-label>
-          <input type="password" matInput [formControl]="passwordFormControl" placeholder="Enter your password">
-          @if (passwordFormControl.hasError('required')) {
+          <input type="password" matInput formControlName="password" placeholder="Enter your password">
+          @if (passwordLogin.hasError('required')) {
             <mat-error>Password is <strong>required</strong></mat-error>
           }
         </mat-form-field>
@@ -37,29 +37,32 @@
       <h2>Create Account</h2>
       <p>Enter your information below or <br />
         continue with social media account.</p>
-      <form>
+      <form [formGroup]="signUpForm">
         <mat-form-field appearance="outline">
           <mat-label><span class="material-icons">email</span> Email address</mat-label>
-          <input type="email" matInput [formControl]="emailFormControl" placeholder="Your email address">
-          @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+          <input type="email" matInput formControlName="email" placeholder="Your email address">
+          @if (emailSignUp.hasError('email') && !emailSignUp.hasError('required')) {
             <mat-error>Please enter a valid email address</mat-error>
           }
-          @if (emailFormControl.hasError('required')) {
+          @if (emailSignUp.hasError('required')) {
             <mat-error>Email is <strong>required</strong></mat-error>
           }
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label><span class="material-icons">phone_iphone</span> Mobile Number</mat-label>
-          <input type="tel" matInput [formControl]="mobileNumberFormControl" placeholder="Your email address">
-          @if (mobileNumberFormControl.hasError('required')) {
+          <input type="tel" matInput formControlName="mobileNumber" placeholder="Your mobile number">
+          @if (mobileNumberSignUp.hasError('required')) {
             <mat-error>Mobile Number is <strong>required</strong></mat-error>
           }
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label><span class="material-icons">lock</span> Password</mat-label>
-          <input type="password" matInput [formControl]="passwordFormControl" placeholder="Enter your password">
-          @if (passwordFormControl.hasError('required')) {
+          <input type="password" matInput formControlName="password" placeholder="Create password">
+          @if (passwordSignUp.hasError('required')) {
             <mat-error>Password is <strong>required</strong></mat-error>
+          }
+          @if (passwordSignUp.hasError('pattern') && !passwordSignUp.hasError('required')) {
+            <mat-error>Password must contain at least: <strong>8 characters, an uppercase, a lowercase, a number and an special character.</strong></mat-error>
           }
         </mat-form-field>
         <button (click)="change()">Create Account</button>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { StrongPasswordRegx } from 'src/service/strong-password-regex';
 
 @Component({
   selector: 'app-root',
@@ -7,15 +8,53 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'login-project';
+  loginForm!: FormGroup;
+
+  signUpForm!: FormGroup;
   
   showLogin: boolean = true;
 
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-  
-  passwordFormControl = new FormControl('', [Validators.required]);
+  constructor(public formBuilder: FormBuilder) {}
 
-  mobileNumberFormControl = new FormControl('', [Validators.required]);
+  ngOnInit() {
+    this.createLoginForm();
+    this.createSignUpForm();
+  }
+
+  public get emailLogin() {
+    return this.loginForm.controls['email'];
+  }
+
+  public get passwordLogin() {
+    return this.loginForm.controls['password'];
+  }
+
+  public get emailSignUp() {
+    return this.signUpForm.controls['email'];
+  }
+
+  public get passwordSignUp() {
+    return this.signUpForm.controls['password'];
+  }
+
+  public get mobileNumberSignUp() {
+    return this.signUpForm.controls['mobileNumber'];
+  }
+
+  createLoginForm() {
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]]
+    });
+  }
+
+  createSignUpForm() {
+    this.signUpForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.pattern(StrongPasswordRegx)]],
+      mobileNumber: ['', [Validators.required]]
+    });
+  }
 
   change() {
     this.showLogin = !this.showLogin;
